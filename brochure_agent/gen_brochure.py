@@ -6,10 +6,11 @@ from dotenv import load_dotenv
 from bs4 import BeautifulSoup
 from IPython.display import Markdown, display, update_display
 from openai import OpenAI
+import sys
 
 # Initialize and constants
 
-load_dotenv(dotenv_path="/Users/chathuraj.gunasekara/Documents/Projects/Agentic AI design patterns/.env",override=True)
+load_dotenv(override=True)
 api_key = os.getenv('OPENAI_API_KEY')
 
 if api_key and api_key.startswith('sk-proj-') and len(api_key)>10:
@@ -135,4 +136,11 @@ def create_brochure(company_name, url):
     print(f"Brochure has been saved to {filename}")
     return result
 
-create_brochure("Edward Donner", "https://edwarddonner.com")
+if __name__ == "__main__":
+    if len(sys.argv) != 3:
+        print("Usage: python gen_brochure.py \"Company Name\" company_url")
+        sys.exit(1)
+    
+    company_name = sys.argv[1]
+    url = sys.argv[2]
+    create_brochure(company_name, url)
