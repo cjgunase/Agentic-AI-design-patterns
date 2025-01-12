@@ -9,7 +9,7 @@ from openai import OpenAI
 
 # Initialize and constants
 
-load_dotenv(override=True)
+load_dotenv(dotenv_path="/Users/chathuraj.gunasekara/Documents/Projects/Agentic AI design patterns/.env",override=True)
 api_key = os.getenv('OPENAI_API_KEY')
 
 if api_key and api_key.startswith('sk-proj-') and len(api_key)>10:
@@ -135,4 +135,4 @@ def create_brochure(company_name, url):
     print(f"Brochure has been saved to {filename}")
     return result
 
-create_brochure("HuggingFace", "https://huggingface.com")
+create_brochure("Edward Donner", "https://edwarddonner.com")
